@@ -1,0 +1,20 @@
+// SPDX-License-Identifier: MIT
+
+pragma solidity ^0.8.18;
+
+import {Script} from "forge-std/Script.sol";
+import {veToken} from "../src/veToken.sol";
+
+contract DeployveToken is Script {
+
+    uint256 public constant INTIAL_SUPPLY = 1000 ether;
+
+    function run() external returns(veToken) {
+        vm.startBroadcast();
+        veToken vet = new veToken(INTIAL_SUPPLY);
+        new veToken(INTIAL_SUPPLY);
+        vm.stopBroadcast();
+        return vet;
+    }
+    
+}
